@@ -1,0 +1,26 @@
+{
+  "name": "goals-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^9.0.1",
+    "@prisma/client": "^5.10.2",
+    "dayjs": "^1.11.10",
+    "fastify": "^4.26.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^10.8.0",
+    "prisma": "^5.10.2",
+    "prisma-erd-generator": "^1.11.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2"
+  }
+}
