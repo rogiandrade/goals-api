@@ -122,26 +122,26 @@ export async function appRoutes(app: FastifyInstance) {
 
   app.get("/summary", async (request) => {
     const summary = await prisma.$queryRaw`
-    SELECT
-    D.id ,
-    D.date ,
-    (
-      SELECT
-      cast(count(*) as float)
-      FROM day_goals DH
-      WHERE DH.day_id = D.id
-    ) as completed,
-    (
-      SELECT
-      cast(count(*) as float)
-      FROM goal_week_days HWD
-      JOIN goal H
-        ON H.id = HWD.goal_id
-      WHERE
-        HWD.week_day = cast(strftime('%w', D.date/1000.0, 'unixepoch') as int )
-        AND H.created_at <= D.date
-    ) as amount
-    FROM days D
+      SELECT 
+        D.id , 
+        D.date, 
+        (
+          SELECT 
+            cast(count(*) as float)
+            FROM day_goals DG
+            WHERE DG.day_id = D.id
+        ) as completed,
+        (
+          SELECT
+          cast(count(*) as float)
+          FROM goal_week_days GWD
+          JOIN goals G
+            ON G.id = GWD.goal_id
+          WHERE 
+            GWD.week_day = cast(strftime('%w', D.date/1000.0, 'unixepoch') as int )
+            AND G.created_at <= D.date
+        ) as amount
+      FROM days D
     `;
     return summary;
   });
