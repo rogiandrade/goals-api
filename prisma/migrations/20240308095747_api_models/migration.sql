@@ -3,7 +3,7 @@ CREATE TABLE "goals" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "title" TEXT NOT NULL,
     "created_at" DATETIME NOT NULL
-);
+); 
 
 -- CreateTable
 CREATE TABLE "goal_week_days" (
